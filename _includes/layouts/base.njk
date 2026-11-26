@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="{{ site.language }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#121212">
+<script>try{var t=localStorage.getItem("theme");if(t==="light"){document.documentElement.setAttribute("data-theme","light");var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute("content","#faf9f6");}}catch(e){}</script>
+<title>{% if title and title != site.title %}{{ title }} — {% endif %}{{ site.title }}</title>
+{% set pageDescription = site.description %}
+{% if page.url != "/" %}{% set pageDescription = content | excerpt %}{% endif %}
+<meta name="description" content="{{ pageDescription }}">
+<meta name="author" content="{{ site.author }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+<meta property="og:site_name" content="{{ site.title }}">
+<meta property="og:title" content="{% if title and title != site.title %}{{ title }} — {% endif %}{{ site.title }}">
+<meta property="og:description" content="{{ pageDescription }}">
+<meta property="og:url" content="{{ site.url }}{{ page.url }}">
+<meta property="og:type" content="{% if tags and 'posts' in tags %}article{% else %}website{% endif %}">
+{% if tags and 'posts' in tags and page.date %}<meta property="article:published_time" content="{{ page.date.toISOString() }}">{% endif %}
+{# A post can set shareImage in front matter to use its own photo; otherwise the wave photo. #}
+{% set pageShareImage = shareImage or "/images/share.jpg" %}
+<meta property="og:image" content="{{ site.url }}{{ pageShareImage }}">
+{% if not shareImage %}<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{% if title and title != site.title %}{{ title }} — {% endif %}{{ site.title }}">
+<meta name="twitter:description" content="{{ pageDescription }}">
+<meta name="twitter:image" content="{{ site.url }}{{ pageShareImage }}">
+{% if page.url == "/" %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "name": {{ site.title | dump | safe }},
+      "url": {{ site.url | dump | safe }},
+      "description": {{ site.description | dump | safe }},
+      "inLanguage": "eu"
+    },
+    {
+      "@type": "Person",
+      "name": {{ site.author | dump | safe }},
+      "url": {{ site.url | dump | safe }},
+      "sameAs": [
+        "https://www.instagram.com/jonamccallum",
+        "https://www.threads.com/@jonamccallum",
+        "https://www.youtube.com/@Jonathanmccallum1",
+        "https://jonamccallum.substack.com"
+      ]
+    }
+  ]
+}
+</script>
+{% elif tags and 'posts' in tags %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": {{ title | dump | safe }},
+  "description": {{ pageDescription | dump | safe }},
+  "url": {{ (site.url + page.url) | dump | safe }},
+  "image": {{ (site.url + pageShareImage) | dump | safe }},
+{% if page.date %}  "datePublished": {{ page.date.toISOString().slice(0, 10) | dump | safe }},
+  "dateModified": {{ page.date.toISOString().slice(0, 10) | dump | safe }},
+{% endif %}  "author": { "@type": "Person", "name": {{ site.author | dump | safe }}, "url": {{ site.url | dump | safe }} },
+  "mainEntityOfPage": { "@type": "WebPage", "@id": {{ (site.url + page.url) | dump | safe }} },
+  "inLanguage": "eu"
+}
+</script>
+{% else %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {{ title | dump | safe }},
+  "url": {{ (site.url + page.url) | dump | safe }},
+  "description": {{ pageDescription | dump | safe }},
+  "inLanguage": "eu"
+}
+</script>
+{% endif %}
+<link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed/">
+<link rel="preload" href="/css/style.css?v=17" as="style">
+<link rel="stylesheet" href="/css/style.css?v=17">
+</head>
+<body>
+<a class="skip-link" href="#main">Edukira salto egin</a>
+<header class="site-header">
+  <a class="site-header__title" href="/">Jonathan McCallum</a>
+  <button id="theme-toggle" type="button">Iluna</button>
+</header>
+<nav class="site-nav" aria-label="Gunearen nabigazioa">
+  <a href="/#artikuluak">Artikuluak</a>
+  <a href="/#bideoak">Bideoak</a>
+</nav>
+<nav class="return-home-bar" aria-label="English version">
+  <a class="return-home" href="https://jonathanmccallum.com{{ page.url }}">Return home to Jonathan <span lang="eu">· Jonathangengana itzuli</span></a>
+</nav>
+<main id="main">
+{{ content | safe }}
+</main>
+<footer class="site-footer">
+  <p><a class="return-home" href="https://jonathanmccallum.com{{ page.url }}">Return home to Jonathan <span lang="eu">· Jonathangengana itzuli</span></a></p>
+  <p class="translation-note">Itzulpena ondo ateratzea espero dut. Seguruenik akats batzuk daude.</p>
+  <p>{{ site.title }} — <a href="/feed/">RSS jarioa</a> · <a href="/search/">Bilatu</a> · <a href="/privacy/">Pribatutasuna</a> · <a href="#" id="cookie-settings">Cookie-ezarpenak</a></p>
+  <p>Connect — <a href="https://www.instagram.com/jonamccallum">Instagram</a> · <a href="https://www.threads.com/@jonamccallum">Threads</a> · <a href="https://www.youtube.com/@Jonathanmccallum1">YouTube</a> · <a href="https://jonamccallum.substack.com">Substack</a> · <a href="/feed/">RSS</a></p>
+  <p>Jarri harremanetan — <a href="#" data-contact-email data-contact-email-text>Bidali mezua</a></p>
+  <p>Built with Eleventy, hosted on Cloudflare Pages.</p>
+</footer>
+<script src="/js/main.js?v=9" defer></script>
+<script src="/js/contact.js?v=1" defer></script>
+<script src="/js/consent.js?v=1" defer></script>
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Cookie" hidden>
+  <p><strong>Cookieak.</strong> Gune hau sinplea da. Zure gailuan gai argia edo iluna gogoratzen du bakarrik. Ez zaitugu hemen jarraitzen. <a href="/privacy/">Irakurri pribatutasun-orria</a>.</p>
+  <p class="cookie-banner__buttons">
+    <button id="cookie-accept" type="button">Onartu</button>
+    <button id="cookie-reject" type="button">Ukatu</button>
+  </p>
+</div>
+</body>
+</html>

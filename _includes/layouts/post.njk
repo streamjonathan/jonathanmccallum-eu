@@ -1,0 +1,22 @@
+---
+layout: layouts/base.njk
+---
+<article>
+  <h1>{{ title }}</h1>
+  <p class="translation-note translation-note--top">Every Basque page is bilingual: each sentence in English, then the same sentence in Basque. The Basque is a draft translation — I really hope it is OK (probably has some mistakes). A native speaker has not checked it yet.<br>Orrialde bakoitza elebiduna da: esaldi bakoitza ingelesez, eta gero esaldi bera euskaraz. Euskara itzulpen-zirriborro bat da — benetan espero dut ondo egotea (agian akats batzuk ditu). Euskaldun batek oraindik ez du egiaztatu.</p>
+  {% if page.date %}
+  <p class="meta"><time datetime="{{ page.date.toISOString() }}">{{ page.date.toISOString().slice(0, 10) }}</time></p>
+  {% endif %}
+  <div class="post-body">
+  {{ content | safe }}
+  </div>
+</article>
+{% include "get-involved.njk" %}
+{% set prevPost = collections.publishedPosts | getPreviousCollectionItem(page) %}
+{% set nextPost = collections.publishedPosts | getNextCollectionItem(page) %}
+{% if prevPost or nextPost %}
+<nav class="post-nav" aria-label="More writing">
+  {% if prevPost %}<a class="post-nav__prev" href="{{ prevPost.url }}">← {{ prevPost.data.title }}</a>{% endif %}
+  {% if nextPost %}<a class="post-nav__next" href="{{ nextPost.url }}">{{ nextPost.data.title }} →</a>{% endif %}
+</nav>
+{% endif %}
