@@ -22,11 +22,8 @@ description: "How I learn Basque and Japanese by listening, a little every day."
 I watched a video about learning Japanese by listening, and I am applying the same method to Basque and Japanese.
 Japoniera entzunez ikasteari buruzko bideo bat ikusi nuen, eta metodo bera erabiltzen ari naiz euskararekin eta japonierarekin.
 
-**Watch the video: [Learning Japanese Isn't Actually That Hard](https://youtu.be/7fvCb5_Nzq4) — Trenton explains the whole method in 21 minutes. It is worth your time.**
-**Ikusi bideoa: [Learning Japanese Isn't Actually That Hard](https://youtu.be/7fvCb5_Nzq4) — Trentonek metodo osoa azaltzen du 21 minututan. Merezi du.**
-
-The video is Trenton's ["Learning Japanese Isn't Actually That Hard"](https://youtu.be/7fvCb5_Nzq4).
-Bideoa Trentonena da: ["Learning Japanese Isn't Actually That Hard"](https://youtu.be/7fvCb5_Nzq4).
+The video is Trenton's "Learning Japanese Isn't Actually That Hard".
+Bideoa Trentonena da: "Learning Japanese Isn't Actually That Hard".
 
 His point is simple: we pick up a language by understanding it, not by studying it like a maths problem.
 Bere ideia sinplea da: hizkuntza bat ulertuz ikasten dugu, ez matematika-arazo bat bezala ikasiz.
@@ -179,3 +176,5 @@ Jarraitu egingo dut, pixkanaka.
 
 If you are learning a language too, what do you listen to?
 Zuk ere hizkuntza bat ikasten ari bazara, zer entzuten duzu?
+
+**Watch the video / Ikusi bideoa: [Learning Japanese Isn't Actually That Hard](https://youtu.be/7fvCb5_Nzq4) — Trenton explains the whole method in 21 minutes. / Trentonek metodo osoa azaltzen du 21 minututan.**
